@@ -9,32 +9,51 @@ This project is built using HTML, CSS, and JavaScript and works completely on th
 🚀 Features
 
 ✨ User login and registration system
+
 ✨ Create and publish blog posts
+
 ✨ Rich text editor (bold, headings, lists, links)
+
 ✨ Image upload with drag & drop support
+
 ✨ Tag system for organizing blog posts
+
 ✨ Automatic reading time calculation
+
 ✨ Beautiful animated blog cards
+
 ✨ “My Blogs” section for managing personal posts
+
 ✨ Author-only editing permission
+
 ✨ Profile page for each writer
+
 ✨ Dark mode and light mode support
+
 ✨ Responsive design for different screen sizes
 
 🛠️ Technologies Used
 
 Technology	  - Purpose
+
 HTML	        - Structure of the web pages
+
 CSS	          - Styling, layout, and responsive design
+
 JavaScript	  - Functionality and application logic
+
 Local Storage	- Storing blog and user data in the browser
 
 📸 Main Modules
 
 🔐 Authentication - Users can register and log in to access the blogging system.
+
 ✍️ Blog Creation - Users can write blogs using a rich text editor, add images, tags, and categories.
+
 📚 Blog Display - Blogs are displayed on the homepage in modern blog cards.
+
 👤 My Blogs - Users can view and manage only the blogs they have created.
+
 🎨 Theme Switching - Users can switch between Dark Mode 🌙 and Light Mode ☀️.
 
 🎯 Purpose of the Project
