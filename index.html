@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Blog Management System</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- LOGIN SECTION -->
+<section id="loginSection" class="login-container">
+
+<h2>Blog Platform Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section id="dashboardSection" style="display:none">
+
+<div class="dashboard">
+
+<h1>Welcome to MyBlog 🌍</h1>
+<p class="subtitle">Share ideas. Discover stories.</p>
+
+<div class="dashboard-grid">
+
+<div class="dash-card" onclick="showSection('home')">
+📖
+<h2>Read Blogs</h2>
+<p>Explore blogs written by people</p>
+</div>
+
+<div class="dash-card" onclick="showSection('create')">
+✍️
+<h2>Write Blog</h2>
+<p>Create and publish your thoughts</p>
+</div>
+
+<div class="dash-card" onclick="showMyBlogs()">
+🧑‍💻
+<h2>My Blogs</h2>
+<p>Manage your blogs</p>
+</div>
+
+<div class="dash-card" onclick="logout()">
+🚪
+<h2>Logout</h2>
+<p>Exit the platform</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- HEADER -->
+<header id="mainHeader" >
+
+<h1>Blog Management System</h1>
+
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('create')">Create Blog</button>
+<button onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+</nav>
+
+</header>
+
+
+<!-- BLOG STATISTICS -->
+<section id="statsSection" class="search" style="display:none">
+
+<div>
+<b>Total Blogs:</b> <span id="totalBlogs">0</span> |
+<b>Total Likes:</b> <span id="totalLikes">0</span> |
+<b>Total Views:</b> <span id="totalViews">0</span>
+</div>
+
+<br>
+
+<input 
+type="text" 
+id="searchInput" 
+placeholder="Search blogs..." 
+onkeyup="searchBlogs()"
+>
+
+<select id="filterCategory" onchange="filterCategory()">
+<option value="all">All Categories</option>
+<option value="Technology">Technology</option>
+<option value="Education">Education</option>
+<option value="Lifestyle">Lifestyle</option>
+</select>
+
+</section>
+
+
+<!-- TRENDING BLOGS -->
+<section id="trendingSection" style="display:none">
+
+<h2 class="section-title">🔥 Trending Blogs</h2>
+
+<div class="blogs" id="trendingContainer"></div>
+
+</section>
+
+
+<!-- HOME / BLOG LIST -->
+<section id="homeSection" style="display:none">
+
+<h2>All Blogs</h2>
+
+<input type="text" id="searchInput" placeholder="Search..." onkeyup="searchBlogs()">
+
+<select id="filterCategory" onchange="filterCategory()">
+<option value="all">All</option>
+<option value="Technology">Technology</option>
+<option value="Travel">Travel</option>
+<option value="Education">Education</option>
+<option value="Lifestyle">Lifestyle</option>
+</select>
+
+<div id="blogContainer"></div>
+
+</section>
+
+
+<!-- CREATE BLOG -->
+<section id="createSection" style="display:none">
+
+<h2 class="section-title">Create New Blog ✍</h2>
+
+<div class="form-container">
+
+<label>Blog Title</label>
+<input type="text" id="title" placeholder="Enter blog title">
+
+<label>Category</label>
+<select id="category">
+<option value="Technology">Technology</option>
+<option value="Education">Education</option>
+<option value="Lifestyle">Lifestyle</option>
+<option value="Travel">Travel</option>
+</select>
+
+<label>Tags</label>
+<input type="text" id="tagInput" placeholder="Press Enter to add tag">
+<div id="tagContainer"></div>
+
+<div id="dropArea" class="drop-area">
+
+<label>Upload Image</label>
+
+<div id="dropArea" class="drop-area">
+<p>📂 Drag & Drop Image or Click</p>
+<input type="file" id="image" onchange="previewImage(event)" hidden>
+</div>
+
+<img id="imagePreview">
+
+</div>
+
+<img id="imagePreview">
+
+<label>Blog Content</label>
+<div class="editor-toolbar">
+
+<button onclick="formatText('bold')"><b>B</b></button>
+<button onclick="formatText('italic')"><i>I</i></button>
+<button onclick="formatText('insertUnorderedList')">• List</button>
+<button onclick="formatText('insertOrderedList')">1. List</button>
+<button onclick="formatText('formatBlock','h2')">H2</button>
+<button onclick="addLink()">🔗 Link</button>
+
+</div>
+
+<div id="contentEditor" class="editor" contenteditable="true"></div>
+
+<div id="contentEditor" class="editor" contenteditable="true"></div>
+<p id="readingTime"></p>
+
+<div style="display:flex; gap:10px; margin-top:10px">
+
+<button onclick="saveBlog()">🚀 Publish Blog</button>
+
+<button onclick="showSection('home')" style="background:gray">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIEW BLOG -->
+<section id="viewSection" style="display:none">
+
+<div class="view-blog">
+
+<h2 id="viewTitle"></h2>
+
+<p id="viewAuthor" class="meta"></p>
+<p id="viewDate" class="meta"></p>
+<img id="viewImage" class="view-img">
+<div id="viewContent" class="blog-content"></div>
+
+<p>
+👁 Views: <span id="viewViews"></span> |
+❤️ Likes: <span id="viewLikes"></span>
+</p>
+
+<img id="viewImage" class="view-img" style="max-width:100%; border-radius:8px">
+
+<p id="viewContent"></p>
+
+<p>
+🏷 Tags: <span id="viewTags"></span>
+</p>
+
+<div class="like-section">
+
+<button onclick="likeBlog(currentBlogIndex)">❤️ Like</button>
+
+<button onclick="shareBlog()">🔗 Share</button>
+
+</div>
+
+<h3>💬 Comments</h3>
+
+<div id="commentList"></div>
+
+<input type="text" id="commentInput" placeholder="Write a comment">
+
+<button onclick="addComment()">Post Comment</button>
+
+<br><br>
+
+<button onclick="showSection('home')">⬅ Back</button>
+
+</div>
+<div class="blog-header">
+
+<img id="viewImage" class="header-img">
+
+<h1 id="viewTitle"></h1>
+
+<p class="meta">
+<span id="viewAuthor"></span> •
+<span id="viewDate"></span> •
+<span id="viewReadingTime"></span>
+</p>
+
+</div>
+<div id="viewTags"></div>
+
+</section>
+
+
+
+<section id="profileSection" style="display:none">
+
+<h2 id="profileName"></h2>
+
+<div id="profileBlogs"></div>
+
+</section>
+
+
+<!-- FLOATING CREATE BUTTON -->
+<button class="floating-btn" onclick="showSection('create')">+</button>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

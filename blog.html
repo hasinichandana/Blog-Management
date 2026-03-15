@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<h1>Blog Details</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="create.html">Create Blog</a>
+<a href="dashboard.html">My Blogs</a>
+</nav>
+</header>
+
+<div class="blog-details" id="blogDetails"></div>
+
+<script>
+
+let index = localStorage.getItem("selectedBlog");
+let blogs = JSON.parse(localStorage.getItem("blogs"));
+
+let blog = blogs[index];
+
+let container = document.getElementById("blogDetails");
+
+container.innerHTML = `
+<h2>${blog.title}</h2>
+<p>${blog.content}</p>
+`;
+
+</script>
+
+</body>
+</html>
