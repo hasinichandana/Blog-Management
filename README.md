@@ -58,7 +58,8 @@ Local Storage   - Storing blog and user data in the browser
 🎯 Purpose of the Project
 
 The purpose of this project is to demonstrate the development of a blogging platform using front-end web technologies. It helps in understanding concepts such as: User interface design Dynamic web page functionality Client-side data storage Content management systems
-
+Live Deployment
+https://blogg-management.netlify.app/
 🔮 Future Enhancements 
 
 Backend database integration 
